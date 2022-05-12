@@ -27,7 +27,7 @@ public class Main {
 
        printInfile(_amplitudes, "first.txt");
 
-       double[] _amplitudesCopy  = Arrays.copyOfRange(_amplitudes, 0, 44100);
+       double[] _amplitudesCopy  = Arrays.copyOfRange(_amplitudes, 0, 65536);
        DoubleFFT_1D _doubleFFT_1D = new DoubleFFT_1D(_amplitudesCopy.length);
        _doubleFFT_1D.realForward(_amplitudesCopy);
 
@@ -59,7 +59,7 @@ public class Main {
         FileWriter _writer = new FileWriter(fileName);
         Arrays.stream(array).boxed()
                 .map(String::valueOf)
-                .limit(44100)
+                .limit(65536)
                 .map(i -> i.replace(".", ","))
                 .forEach(i -> {
             try {
